@@ -19,11 +19,20 @@
         <div class="col-lg-3 col-6">
             <div class="card shadow my-3">
                 <div class="card-image mt-3">
-                    <a href="/product/{{$product->slug}}" class="item">
-                        <img data-src="{{Voyager::image($product->image)}}"
-                             src="{{asset('images/lazy_img.jpg')}}"
-                             loading="lazyload"
-                             alt="{{$product->title}}" class="img-fluid lazyload">
+                    <a href="{{route('product',["slug"=>$product->slug]) }}" class="item">
+
+                        @if($product->type=="video" || $product->type=="audio")
+                            <video preload="none"
+                                   width="100%"
+                                   poster="{{Voyager::image($product->image)}}"
+                                   controls>
+                                <source src="{{$product->preview_url}}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        @else
+                            <img src="{{Voyager::image($product->image)}}"
+                                 alt="{{$product->title}}" class="img-fluid">
+                        @endif
                     </a>
                 </div>
                 <div class="card-body">

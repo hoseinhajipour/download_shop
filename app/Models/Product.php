@@ -30,27 +30,6 @@ class Product extends Model
             $product->slug = Str::replace('(', "_", $product->slug);
             $product->slug = Str::replace(')', "_", $product->slug);
 
-
-           // $format = $request->format_;
-            /*
-            try {
-                $imagePath = "storage/" . $product->image;
-
-               // $imagePath = str_replace("_croped.webp", $format, $imagePath);
-                $image = Image::make($imagePath);
-                $image->fit(400, 400, function ($constraint) {
-                    $constraint->upsize();
-                    $constraint->aspectRatio();
-                });
-                $image->encode('webp', 10);
-                $webpPath = preg_replace('/\.(jpe?g|png|gif|webp)$/i', '_croped.webp', $imagePath);
-                $image->save($webpPath);
-                $product->image = str_replace("storage/", "", $webpPath);
-                $product->save();
-            } catch (Exception $e) {
-
-            }
-            */
         });
 
         static::updating(function ($product) {

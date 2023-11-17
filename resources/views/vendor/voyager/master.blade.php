@@ -149,6 +149,7 @@ if (\Illuminate\Support\Str::startsWith(Auth::user()->avatar, 'http://') || \Ill
 @endif
 <livewire:scripts/>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <x-livewire-alert::scripts />
 </body>
 </html>
