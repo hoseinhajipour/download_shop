@@ -1,12 +1,27 @@
-@section('title', 'Index')
+@section('seo')
+    @include('meta::manager', [
+   'title'         =>  setting('site.title'),
+   'description'   => setting('site.description'),
+   'robots'=>'index,follow',
+   'referrer'=>'origin',
+   'image'=>Voyager::image(setting('site.logo')),
+   'keywords'=>setting('site.keywords')
+])
+@endsection
 
-<div class="d-grid col-lg-4 mx-auto">
-    <div class="card">
-        <div class="card-header">
-            @yield('title')
-        </div>
-        <div class="card-body">
-            Build something amazing!
-        </div>
-    </div>
+<div class="container" style="margin-top: 120px">
+
+    <livewire:inc.last-products/>
+
+    <section class="my-5">
+        <livewire:inc.explore-categories/>
+    </section>
+    <livewire:inc.last-posts/>
+
+    <section class="my-5">
+        <livewire:inc.plans/>
+    </section>
+
+
 </div>
+
